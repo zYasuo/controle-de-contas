@@ -1,0 +1,92 @@
+ @import url('https://fonts.googleapis.com/css2?family=Caprasimo&display=swap');
+
+
+ body {
+     background-color: #343541;
+     color: white;
+ }
+
+ form {
+     margin-left: 12em;
+     width: 50%;
+     ;
+     border-radius: 22px;
+     background: #2C3255;
+     box-shadow: 5px 5px 0px #121422, -5px -5px 0px #464e86;
+     padding: 2em;
+ }
+
+ input {
+     width: 100%;
+     margin: 0.5em;
+ }
+
+ .custom-font {
+     font-family: 'Caprasimo', cursive;
+ }
+
+ .center1 {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+ }
+
+ #expensesChart {
+     width: 100%;
+     height: 400px;
+     /* Ajuste a altura conforme necessário */
+ }
+
+ .card {
+     width: 100%;
+     margin-left: 0.5em;
+     margin-top: 1em;
+ }
+
+ .card-green {
+     border-radius: 2px;
+     background: #BCEFE0;
+     box-shadow: 5px 5px 0px #094e1a, -5px -5px 0px #77f39c;
+     color: #2C3154;
+ }
+
+ .card-red {
+     border-radius: 2px;
+     background: #C63F3D;
+     box-shadow: 5px 5px 0px #4e161a, -5px -5px 0px #ff5668;
+     color: #2C3154;
+ }
+
+ .card-yellow {
+     border-radius: 2px;
+     background: #FBF376;
+     box-shadow: 5px 5px 0px #5f6324, -5px -5px 0px #ffff92;
+     color: #2C3154;
+ }
+
+ .card .card-details {
+     display: none;
+     transition: height 0.3s ease-in-out;
+ }
+
+ .edit-expense {
+     background-color: #26AE60;
+     color: white;
+     border: none;
+     border-radius: 5px;
+ }
+
+ .delete-expense {
+     background-color: #e74d48;
+     color: white;
+     border: none;
+     border-radius: 5px;
+ }
+
+ .modal {
+     color: #2c3154;
+ }
+
+ .card-title {
+     text-align: center;
+ }
