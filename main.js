@@ -6,7 +6,7 @@ $(document).ready(function () {
         records.forEach((record, index) => {
             let totalExpenses = 0;
             record.expenses.forEach(expense => {
-                totalExpenses += parseFloat(expense.value);
+                totalExpenses += parseFloat(typeof expense.value === 'string' ? expense.value.replace(",", ".") : expense.value);
             });
             let remainingSalary = record.salary - totalExpenses;
             let card = $(`
@@ -78,7 +78,7 @@ $(document).ready(function () {
     function renderChart() {
         const records = JSON.parse(localStorage.getItem('records')) || [];
         const labels = records.map(record => record.month);
-        const data = records.map(record => record.expenses.reduce((total, expense) => total + parseFloat(expense.value), 0));
+        const data = records.map(record => record.expenses.reduce((total, expense) => total + parseFloat(typeof expense.value === 'string' ? expense.value.replace(",", ".") : expense.value), 0));
 
         const ctx = document.getElementById('expensesChart').getContext('2d');
 
@@ -152,9 +152,9 @@ $(document).ready(function () {
     $('#account-manager').on('submit', function (e) {
         e.preventDefault();
         const month = $('#month').val();
-        let salary = parseFloat($('#salary').val());
+        let salary = parseFloat($('#salary').val().replace(",", "."));
         const expenseDescription = $('#expense-description').val();
-        const expenseValue = parseFloat($('#expense').val());
+        const expenseValue = parseFloat($('#expense').val().replace(",", "."));
         let records = JSON.parse(localStorage.getItem('records')) || [];
         let monthRecord = records.find(record => record.month === month);
         if (monthRecord) {
@@ -185,7 +185,7 @@ $(document).ready(function () {
         let records = JSON.parse(localStorage.getItem('records')) || [];
         let monthRecord = records.find(record => record.month === month);
         if (monthRecord) {
-            monthRecord.expenses[expenseIndex].value = newExpenseValue;
+            monthRecord.expenses[expenseIndex].value = newExpenseValue.replace(",", ".");
             let totalExpenses = monthRecord.expenses.reduce((total, expense) => total + parseFloat(expense.value), 0);
             let remainingSalary = monthRecord.salary - totalExpenses;
             monthRecord.status = getRecordStatus(remainingSalary, monthRecord.salary);
